@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React from 'react'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import Home from './Components/Home';
+import SinglePage from './Components/SinglePage';
+import Error from './Components/Error';
+import {BrowserRouter ,Routes,Route} from "react-router-dom"
 import './App.css';
+import Navbar from './Components/Pages/Navbar';
 
-function App() {
+const App=()=> {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+         <BrowserRouter>
+            <Routes>
+               <Route path='/' element={<Home/>}/>
+               <Route path='movie/:id' element={<SinglePage/>}/>
+               <Route path='*' element={<Error/>}/>
+            </Routes>
+         </BrowserRouter>
     </div>
   );
 }
